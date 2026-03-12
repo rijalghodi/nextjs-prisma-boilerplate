@@ -1,7 +1,5 @@
 role	name	email	password
-SUPERADMIN	Rijal Ghodi	rijalghodi.dev@gmail.com	admin123
 SUPERADMIN	Super Admin	superadmin@test.com	admin123
 ADMIN	Admin	admin@test.com	admin123
-ADMIN	Yulianto	yulianto@yopmail.com	admin123
 STAFF	Staff	staff@test.com	admin123
 GUEST	Guest	guest@test.com	admin123
