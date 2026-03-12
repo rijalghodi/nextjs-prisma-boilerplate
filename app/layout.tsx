@@ -13,6 +13,7 @@ import { DialogConfirm } from "@/components/ui/dialog-confirm";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import "@/css/styles.css";
+import { siteConfig } from "@/config/site.config";
 
 const sansFont = localFont({
   src: "./inter.woff2",
@@ -28,8 +29,8 @@ const monoFont = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | RSI Accounting",
-    default: "RSI Accounting",
+    template: "%s | " + siteConfig.name,
+    default: siteConfig.name,
   },
 };
 
