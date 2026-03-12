@@ -1,5 +1,5 @@
+import { siteConfig } from "@/config/site.config";
 import { cn } from "@/lib/utils";
-import { Logo } from "./logo";
 
 export const LogoText = ({
   className,
@@ -12,7 +12,7 @@ export const LogoText = ({
 }) => {
   return (
     <div className={cn("flex items-center gap-2 text-primary", className)}>
-      <Logo size={size} />
+      {/* <Logo size={size} /> */}
       <span
         className={cn(
           "font-semibold uppercase",
@@ -20,8 +20,7 @@ export const LogoText = ({
           "leading-normal font-bold"
         )}
       >
-        {short ? "RSI" : "Rumah Sakit Islam"} <br />
-        Metro Lampung
+        {siteConfig.name}
       </span>
     </div>
   );

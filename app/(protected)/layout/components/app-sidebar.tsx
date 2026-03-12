@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Logo } from "@/components/logos/logo";
+import { LogoText } from "@/components/logos/logo-text";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -110,7 +111,7 @@ export function AppSidebar() {
               <div className="flex items-center justify-between gap-2 px-1 py-1">
                 {open && (
                   <div className="flex items-center gap-2">
-                    <Logo size="sm" />
+                    <LogoText size="default" />
                   </div>
                 )}
                 <SidebarTrigger title="Toggle Sidebar" className="size-9 rounded-full" />

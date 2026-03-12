@@ -1,17 +1,17 @@
 import { env } from "./env.config";
 
 export const siteConfig = {
-  name: "Rumah Sakit Islam Metro Lampung",
+  name: "NextJS Boilerplate",
   url: "https://qlaris.vercel.app",
   ogImage: `${env.NEXT_PUBLIC_APP_URL}/og.png`,
-  tagline: "Accounting for RSI Metro",
-  author: "Rumah Sakit Islam Metro Lampung",
-  authorUrl: `${env.NEXT_PUBLIC_APP_URL}`,
-  description: "Accounting for RSI Metro",
-  keywords: ["Accounting", "RSI Metro", "RSI", "Metro", "Lampung"],
+  tagline: "Nextjs Boilerplate built with Love",
+  author: "Rijal Ghodi",
+  authorUrl: "rijalghodi.xyz",
+  description: "Nextjs Boilerplate built with Love",
+  keywords: ["Nextjs", "Boilerplate", "Rijal Ghodi", "Rijal", "Ghodi"],
   links: {
     twitter: "https://twitter.com/rijalghodi.dev",
-    github: "https://github.com/rijalghodi/qlaris",
+    github: "https://github.com/rijalghodi/nextjs-boilerplate",
     email: "mailto:rijalghodi.dev@gmail.com",
   },
 };

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { LogoText } from "@/components/logos/logo-text";
+import { siteConfig } from "@/config/site.config";
 
 export function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -23,14 +24,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
           <div className="flex flex-col p-8 lg:p-16 gap-10">
             <LogoText />
             <div className="flex flex-col gap-3">
-              <h3 className="text-2xl font-semibold text-mono">Accounting Software</h3>
-              {/* <div className="text-base font-medium text-secondary-foreground">
-                A robust accounting software ensuring
-                <br /> secure&nbsp;
-                <span className="text-mono font-semibold">efficient accounting</span>
-                &nbsp;to the RSI
-                <br /> Accounting interface.
-              </div> */}
+              <h3 className="text-2xl font-semibold text-mono">{siteConfig.tagline}</h3>
             </div>
           </div>
         </div>

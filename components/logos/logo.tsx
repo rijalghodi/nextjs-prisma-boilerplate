@@ -15,7 +15,6 @@ export const Logo = (
   const isDark = resolvedTheme === "dark" || theme === "dark";
 
   const color = isDark ? "var(--primary)" : "var(--primary)";
-  // const color = "#006402";
 
   return (
     <svg
