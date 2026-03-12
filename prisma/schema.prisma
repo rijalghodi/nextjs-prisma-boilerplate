@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// Enums
+// ─────────────────────────────────────────────
+
+enum UserRole {
+  SUPERADMIN @map("superadmin")
+  ADMIN      @map("admin")
+  STAFF      @map("staff")
+  GUEST      @map("guest")
+
+  @@map("user_role")
+}
+
+// ─────────────────────────────────────────────
+// Models
+// ─────────────────────────────────────────────
+
+model User {
+  id              String    @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
+  email           String    @unique
+  password        String
+  name            String?
+  emailVerifiedAt DateTime? @map("email_verified_at") @db.Timestamptz
+  role            UserRole
+  isActive        Boolean   @default(true) @map("is_active")
+  avatarFileId    String?   @map("avatar_file_id") @db.Uuid
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt       DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+
+  avatarFile File? @relation("UserAvatar", fields: [avatarFileId], references: [id])
+
+  @@index([role], map: "user_role_idx")
+  @@map("users")
+}
+
+model VerificationToken {
+  id         String   @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
+  identifier String
+  token      String   @unique
+  expires    DateTime @db.Timestamptz
+
+  @@map("verification_tokens")
+}
+
+model File {
+  id        String   @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
+  name      String?
+  path      String
+  mimeType  String?  @map("mime_type")
+  size      Int?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
+
+  usersWithAvatar User[] @relation("UserAvatar")
+
+  @@map("files")
+}
