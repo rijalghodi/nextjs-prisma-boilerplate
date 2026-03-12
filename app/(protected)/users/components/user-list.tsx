@@ -14,7 +14,6 @@ import {
 import { Download, Edit, Plus, Trash2 } from "lucide-react";
 import { User, UserRole } from "@/types/user.type";
 import { formatDate, getInitials } from "@/lib/helpers";
-import { useExportUsers } from "@/hooks/users/use-export-users";
 import { useUsers } from "@/hooks/users/use-users";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge, BadgeProps } from "@/components/ui/badge";
@@ -83,8 +82,6 @@ const UserList = ({
     role: selectedRole,
     // Add other filters as needed
   });
-
-  const { mutate: exportToFile, isPending: isExporting } = useExportUsers();
 
   const handleRoleSelection = (roleId: string | null) => {
     setSelectedRole(roleId);
@@ -301,18 +298,6 @@ const UserList = ({
     setPagination((prev) => ({ ...prev, pageIndex: 0 }));
   }, []);
 
-  const handleExport = (type: "pdf" | "excel") => {
-    setExportingType(type);
-    exportToFile(
-      {
-        fileType: type,
-      },
-      {
-        onSettled: () => setExportingType(null),
-      }
-    );
-  };
-
   return (
     <>
       <DataGrid
@@ -366,24 +351,6 @@ const UserList = ({
                   </Button>
                 }
               /> */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" shape="circle" disabled={isExporting}>
-                    {isExporting ? <Spinner /> : <Download />}
-                    {isExporting ? "Mengekspor..." : "Ekspor"}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem onClick={() => handleExport("pdf")} disabled={isExporting}>
-                    <PdfIcon />
-                    PDF
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleExport("excel")} disabled={isExporting}>
-                    <ExcelIcon />
-                    Excel
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
               {canAdd && (
                 <Button disabled={isLoading} onClick={() => onAddUser?.()} shape="circle">
                   <Plus />
